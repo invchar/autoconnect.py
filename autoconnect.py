@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.5
 import os
 import time
 import mechanicalsoup
@@ -16,7 +16,7 @@ def checkconnection():
 def getconnected():
 	try:
 		browser = mechanicalsoup.StatefulBrowser()
-		browser.open("http://google.com")
+		browser.open("http://www.capitol.state.tx.us")
 		browser.follow_link("continue")
 	except:
 		return False
