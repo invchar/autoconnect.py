@@ -12,9 +12,11 @@ In this case, we use Mechanical Soup to try to get to the captive portal page. T
 but the exact site doesn't matter as we intend to be redirected to the captive portal page. 
 Once on the captive portal page, Mechanical Soup follows the continue button link, which enters our device into the captive portal system to be allowed internet access.
 
-This Internet connection can be shared out the ethernet port of the Pi using the GUI in Ubuntu MATE. The Pi's connection to the wifi is also made in the GUI. 
+This Internet connection can be shared out the ethernet port of the Pi using the GUI in Ubuntu MATE. The Pi's initial connection to the wifi is also made in the GUI. 
 
 An example crontab entry is as follows:
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * python3.5 /usr/lib/autoconnect/autoconnect.py 2>&1 | logger
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * python3.5 /usr/lib/autoconnect/autoconnect.py
 
-This example entry will run the script every 5 minutes and redirect output to the syslog
+This example entry will run the script every 5 minutes. 
+
+The script will log messages to the syslog
