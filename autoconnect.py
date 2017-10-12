@@ -1,24 +1,24 @@
 #!/usr/bin/env python3.5
 import os
-import syslog
 import time
 import mechanicalsoup
+from syslog import syslog, LOG_INFO, LOG_ERR
 
 
-def log(message):
-    syslog.syslog(message)
+def log(log_level=LOG_INFO, message="No message provided"):
+	syslog(log_level, message)
 
 
 def checkconnection():
 	try:
 		result = os.system("ping -c 1 google.com")
 		if result == 0:
-			log("autoconnect.py: Ping to Google successful")
+			log(message="autoconnect.py: Ping to Google successful")
 			return True
-		log("autoconnect.py: Ping to Google failed")
+		log(LOG_ERR, "autoconnect.py: Ping to Google failed")
 	except:
-		log("autoconnect.py: Ping command failed")
-    return False
+		log(LOG_ERR, "autoconnect.py: Ping command failed")
+	return False
 
 
 def getconnected():
@@ -26,15 +26,15 @@ def getconnected():
 		browser = mechanicalsoup.StatefulBrowser()
 		browser.open("http://www.capitol.state.tx.us")
 		browser.follow_link("continue")
-		log("autoconnect.py: Browser run complete")
+		log(message="autoconnect.py: Browser run complete")
 	except Exception as e:
-		log("autoconnect.py: Browser run failed")
-		log(e)
+		log(LOG_ERR, "autoconnect.py: Browser run failed")
+		log(message=str(e))
 		return False
 
 
 def main():
-	log("autoconnect.py: Modules imported")
+	log(message="autoconnect.py: Modules imported")
 	connected = checkconnection()
 	if not connected:
 		getconnected()
