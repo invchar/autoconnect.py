@@ -24,8 +24,9 @@ def getconnected():
 		browser.open("http://www.capitol.state.tx.us")
 		browser.follow_link("continue")
 		print("autoconnect.py: Browser run complete")
-	except:
+	except Exception as e:
 		print("autoconnect.py: Browser run failed")
+		print(e)
 		return False
 
 def main():
