@@ -1,3 +1,4 @@
+__py*__/
 bin/
 lib/
 include/
@@ -5,3 +6,4 @@ pip-selfcheck.json
 .Python
 local/
 share/
+.env
