@@ -15,6 +15,8 @@ class Base(Model):
 	created_on = DateTimeField(constraints=[SQL("DEFAULT (datetime('now'))")])
 
 
+db.connect()
+
 if __name__ == '__main__':
 	db.create_tables([]) # TODO: update with table names
 
